@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProPoshan — Your Path to Clinical Vitality</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #1a4a2e;
+    --green-mid: #2d6a4f;
+    --green-bright: #40916c;
+    --green-light: #74c69d;
+    --green-pale: #d8f3dc;
+    --green-bg: #eaf7ee;
+    --white: #ffffff;
+    --text-dark: #0d1f14;
+    --text-mid: #3a5a44;
+    --text-light: #6b9e7e;
+    --accent: #52b788;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(14px);
+    padding: 0 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e0f0e5;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    letter-spacing: -0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-deep); }
+  .nav-cta {
+    background: var(--green-deep);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    padding: 10px 22px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    background: var(--green-bg);
+    min-height: 88vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 80px 60px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #b7e4c7 0%, transparent 70%);
+    top: -100px; right: -100px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-pale);
+    border: 1px solid var(--green-light);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--green-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.6rem; color: var(--accent); }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 4vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+  }
+  .hero-title span { color: var(--green-mid); }
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.65;
+    max-width: 420px;
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .hero-buttons { display: flex; gap: 14px; }
+  .btn-store {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--text-dark);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 12px 22px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, opacity 0.2s;
+  }
+  .btn-store:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-store.light {
+    background: var(--white);
+    color: var(--text-dark);
+    border: 1.5px solid #cce5d6;
+  }
+
+  /* HERO PHONE MOCKUP */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .phone-frame {
+    width: 240px;
+    background: var(--white);
+    border-radius: 36px;
+    box-shadow: 0 30px 80px rgba(26,74,46,0.18), 0 4px 16px rgba(26,74,46,0.08);
+    padding: 20px 16px;
+    position: relative;
+    border: 1px solid #e0ede5;
+    animation: float 3.5s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .phone-notch {
+    width: 80px; height: 10px;
+    background: var(--text-dark);
+    border-radius: 10px;
+    margin: 0 auto 16px;
+  }
+  .phone-app-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .phone-tagline {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .phone-stat-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .phone-stat {
+    flex: 1;
+    background: var(--green-bg);
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+  }
+  .phone-stat .num {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    display: block;
+  }
+  .phone-stat .lbl {
+    font-size: 0.62rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .phone-progress-bar {
+    background: var(--green-pale);
+    border-radius: 100px;
+    height: 6px;
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+  .phone-progress-fill {
+    height: 100%;
+    background: var(--green-bright);
+    border-radius: 100px;
+  }
+  .phone-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* SECTION BASE */
+  section { padding: 100px 80px; }
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--green-bright);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+    max-width: 440px;
+  }
+
+  /* BIOMETRICS */
+  .biometrics {
+    background: var(--white);
+    text-align: center;
+  }
+  .biometrics .section-sub { margin: 0 auto; }
+  .bio-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 60px;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .bio-card {
+    background: var(--green-bg);
+    border-radius: 24px;
+    padding: 36px 32px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .bio-card:hover { transform: translateY(-4px); }
+  .bio-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, var(--green-pale) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .bio-change {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--green-bright);
+    background: var(--green-pale);
+    border-radius: 100px;
+    padding: 4px 12px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  .bio-big-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .bio-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+  .bio-bars { display: flex; gap: 6px; align-items: flex-end; height: 40px; }
+  .bio-bar {
+    flex: 1;
+    border-radius: 6px 6px 0 0;
+    background: var(--green-light);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .bio-bar.active { opacity: 1; background: var(--green-deep); }
+
+  .bio-ring-card {
+    background: var(--green-deep);
+    border-radius: 24px;
+    padding: 36px 32px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  .bio-ring-card .bio-label { color: rgba(255,255,255,0.6); }
+  .ring-container {
+    position: relative;
+    width: 120px; height: 120px;
+  }
+  .ring-container svg { transform: rotate(-90deg); }
+  .ring-center-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .ring-center-text .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .ring-center-text .unit { font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+  .view-breakdown {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--green-light);
+    cursor: pointer;
+  }
+
+  /* NUTRITION */
+  .nutrition {
+    background: var(--green-bg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+  .nutrition-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .nutrition-img {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: var(--green-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+  .nutrition-img:first-child { grid-row: span 2; aspect-ratio: auto; }
+  .nutrition-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+  .db-badge {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 12px;
+    display: inline-block;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .features-list { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+    color: var(--text-mid);
+    font-weight: 500;
+  }
+  .feature-check {
+    width: 22px; height: 22px;
+    background: var(--green-bright);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 0.7rem;
+  }
+
+  /* MOVEMENT */
+  .movement { background: var(--white); }
+  .movement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 50px;
+  }
+  .explore-btn {
+    background: var(--green-bg);
+    border: 1.5px solid var(--green-light);
+    border-radius: 100px;
+    padding: 10px 22px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--green-deep);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .explore-btn:hover { background: var(--green-pale); }
+  .workout-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .workout-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--green-bg);
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  .workout-card:hover { transform: scale(1.02); }
+  .workout-thumb {
+    height: 180px;
+    background: var(--green-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .workout-thumb-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.25));
+  }
+  .workout-tag {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 100px;
+    padding: 3px 10px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--green-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .workout-info { padding: 16px; }
+  .workout-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+  .workout-meta { display: flex; gap: 12px; }
+  .workout-meta span {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* GUARDIAN */
+  .guardian {
+    background: var(--green-bg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+  .guardian-content {}
+  .guardian-features { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .guardian-feature {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(26,74,46,0.06);
+  }
+  .guardian-feature .icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .icon-blue { background: #dbeafe; }
+  .icon-green { background: var(--green-pale); }
+  .guardian-feature .name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-dark);
+  }
+  .guardian-feature .desc {
+    font-size: 0.76rem;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+  .guardian-watch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .watch-visual {
+    width: 260px; height: 260px;
+    background: var(--text-dark);
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .watch-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(64,145,108,0.2) 0%, transparent 60%);
+  }
+  .watch-screen {
+    width: 180px; height: 180px;
+    background: radial-gradient(circle at 40% 40%, #1a5c3a, #0d1f14);
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .watch-heart { font-size: 2.4rem; }
+  .watch-bpm {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .watch-bpm-label {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* NEWS */
+  .news { background: var(--white); }
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 60px;
+  }
+  .news-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #e8f4ec;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .news-card:hover { box-shadow: 0 12px 40px rgba(26,74,46,0.1); }
+  .news-thumb {
+    height: 180px;
+    background: var(--green-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+  }
+  .news-body { padding: 22px; }
+  .news-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--green-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .news-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .news-excerpt {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .news-meta {
+    font-size: 0.72rem;
+    color: #b0c8b8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--green-deep);
+    text-align: center;
+    padding: 100px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -150px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(116,198,157,0.15) 0%, transparent 65%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .cta-section .section-title { color: var(--white); }
+  .cta-section .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto 44px; max-width: 480px; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; }
+  .cta-btn {
+    border-radius: 100px;
+    padding: 14px 30px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, opacity 0.2s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+  .cta-btn.primary { background: var(--white); color: var(--green-deep); }
+  .cta-btn.secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.3);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d1f14;
+    color: rgba(255,255,255,0.6);
+    padding: 60px 80px 40px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+  }
+  .footer-brand .nav-logo { color: var(--white); font-size: 1.4rem; margin-bottom: 12px; display: block; }
+  .footer-brand p { font-size: 0.84rem; line-height: 1.65; max-width: 260px; }
+  .footer-col h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    text-decoration: none;
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.5);
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--green-light); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+  }
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.07);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.9rem;
+  }
+  .social-link:hover { background: rgba(255,255,255,0.14); }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeInUp 0.6s ease both;
+  }
+  .hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.15s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.25s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.35s; }
+
+  /* RESPONSIVE HELPERS */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    section { padding: 70px 28px; }
+    .hero { grid-template-columns: 1fr; padding: 60px 28px; text-align: center; }
+    .hero-subtitle { margin: 0 auto 36px; }
+    .hero-buttons { justify-content: center; }
+    .hero-visual { display: none; }
+    .nutrition, .guardian { grid-template-columns: 1fr; }
+    .bio-cards { grid-template-columns: 1fr; }
+    .workout-grid { grid-template-columns: 1fr 1fr; }
+    .news-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    .movement-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">ProPoshan</span>
+  <ul class="nav-links">
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Nutrition</a></li>
+    <li><a href="#">Workouts</a></li>
+    <li><a href="#">Blog</a></li>
+  </ul>
+  <button class="nav-cta">Download Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 80px 80px 60px;">
+  <div class="hero-content">
+    <div class="hero-badge">Vitality 2.0 is here</div>
+    <h1 class="hero-title">Your Path to<br><span>Clinical Vitality</span></h1>
+    <p class="hero-subtitle">The clinical-grade wellness ecosystem that curates your health data into a seamless journey of nutrition, movement, and recovery.</p>
+    <div class="hero-buttons">
+      <button class="btn-store">
+        <span>🍎</span> App Store
+      </button>
+      <button class="btn-store light">
+        <span>▶</span> Play Store
+      </button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-app-name">ProPoshan</div>
+      <div class="phone-tagline">Safe wilyur.</div>
+      <div class="phone-stat-row">
+        <div class="phone-stat">
+          <span class="num">8.4k</span>
+          <span class="lbl">Steps</span>
+        </div>
+        <div class="phone-stat">
+          <span class="num">1840</span>
+          <span class="lbl">kcal</span>
+        </div>
+      </div>
+      <div class="phone-progress-bar"><div class="phone-progress-fill" style="width:72%"></div></div>
+      <div class="phone-label-row"><span>Nutrition</span><span>72%</span></div>
+      <div style="height:8px"></div>
+      <div class="phone-progress-bar"><div class="phone-progress-fill" style="width:55%;background:#74c69d"></div></div>
+      <div class="phone-label-row"><span>Hydration</span><span>55%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOMETRICS -->
+<section class="biometrics">
+  <div class="section-label">Real-time Bio-Metrics</div>
+  <h2 class="section-title">Precision tracking that feels<br>organic, not clinical</h2>
+  <div class="bio-cards">
+    <div class="bio-card">
+      <span class="bio-change">+12% vs Yesterday</span>
+      <div class="bio-big-num">8,432</div>
+      <div class="bio-label">Daily Steps</div>
+      <div class="bio-bars">
+        <div class="bio-bar" style="height:30%"></div>
+        <div class="bio-bar" style="height:50%"></div>
+        <div class="bio-bar" style="height:40%"></div>
+        <div class="bio-bar active" style="height:80%"></div>
+        <div class="bio-bar" style="height:65%"></div>
+        <div class="bio-bar" style="height:55%"></div>
+        <div class="bio-bar" style="height:45%"></div>
+      </div>
+    </div>
+    <div class="bio-ring-card">
+      <div class="bio-label">Calories Consumed</div>
+      <div class="ring-container">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="10"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#52b788" stroke-width="10"
+            stroke-dasharray="314" stroke-dashoffset="82" stroke-linecap="round"/>
+        </svg>
+        <div class="ring-center-text">
+          <span class="num">1,840</span>
+          <span class="unit">kcal</span>
+        </div>
+      </div>
+      <div class="view-breakdown">View Breakdown →</div>
+    </div>
+  </div>
+</section>
+
+<!-- NUTRITION -->
+<section class="nutrition">
+  <div class="nutrition-images">
+    <div class="nutrition-img" style="height:100%;background:#c5e8d4;font-size:5rem;flex-direction:column;gap:12px;">
+      🍛
+      <div class="db-badge">10,000+ Indian Food<br>Items in database</div>
+    </div>
+    <div class="nutrition-img" style="background:#d4ead9;font-size:4rem;">🥗</div>
+    <div class="nutrition-img" style="background:#b7ddc6;font-size:4rem;">🫙</div>
+  </div>
+  <div>
+    <div class="section-label">Heritage-First</div>
+    <h2 class="section-title">Nutrition Rooted<br>in Heritage</h2>
+    <p class="section-sub">Finally, a tracker that understands Dal, Roti, and Paneer. ProPoshan's vast clinical database provides precise nutrient breakdown for thousands of traditional Indian dishes.</p>
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        Clinical-grade macro tracking
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        AI-powered recipe recommendations
+      </div>
+      <div class="feature-item">
+        <div class="feature-check">✓</div>
+        Video tutorials for healthy alternatives
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOVEMENT -->
+<section class="movement">
+  <div class="movement-header">
+    <div>
+      <div class="section-label">Movement Library</div>
+      <h2 class="section-title">Movement for<br>Every Body</h2>
+      <p class="section-sub">Curated sequences from Hatha Yoga to High-Intensity Interval Training.</p>
+    </div>
+    <button class="explore-btn">Explore Library</button>
+  </div>
+  <div class="workout-grid">
+    <div class="workout-card">
+      <div class="workout-thumb" style="background:linear-gradient(135deg,#d8f3dc,#74c69d);">
+        🧘‍♀️
+        <div class="workout-thumb-bg"></div>
+        <div class="workout-tag">Beginner</div>
+      </div>
+      <div class="workout-info">
+        <div class="workout-name">Morning Hatha Flow</div>
+        <div class="workout-meta">
+          <span>⏱ 30 min</span>
+          <span>🔥 180 kcal</span>
+        </div>
+      </div>
+    </div>
+    <div class="workout-card">
+      <div class="workout-thumb" style="background:linear-gradient(135deg,#b7ddc6,#2d6a4f);">
+        🏋️
+        <div class="workout-thumb-bg"></div>
+        <div class="workout-tag">Advanced</div>
+      </div>
+      <div class="workout-info">
+        <div class="workout-name">Full Body Power</div>
+        <div class="workout-meta">
+          <span>⏱ 45 min</span>
+          <span>🔥 420 kcal</span>
+        </div>
+      </div>
+    </div>
+    <div class="workout-card">
+      <div class="workout-thumb" style="background:linear-gradient(135deg,#40916c,#1a4a2e);">
+        💨
+        <div class="workout-thumb-bg"></div>
+        <div class="workout-tag">Fat Burn</div>
+      </div>
+      <div class="workout-info">
+        <div class="workout-name">HIIT Ignition</div>
+        <div class="workout-meta">
+          <span>⏱ 20 min</span>
+          <span>🔥 360 kcal</span>
+        </div>
+      </div>
+    </div>
+    <div class="workout-card">
+      <div class="workout-thumb" style="background:linear-gradient(135deg,#eaf7ee,#74c69d);">
+        🌿
+        <div class="workout-thumb-bg"></div>
+        <div class="workout-tag">Recovery</div>
+      </div>
+      <div class="workout-info">
+        <div class="workout-name">Deep Tissue Stretch</div>
+        <div class="workout-meta">
+          <span>⏱ 15 min</span>
+          <span>🔥 90 kcal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARDIAN -->
+<section class="guardian">
+  <div class="guardian-content">
+    <div class="section-label">Smart Reminders</div>
+    <h2 class="section-title">Your Digital<br>Health Guardian</h2>
+    <p class="section-sub">Intelligent reminders that nudge you toward your goals without being intrusive. Hydration, posture, and activity alerts tailored to your schedule.</p>
+    <div class="guardian-features">
+      <div class="guardian-feature">
+        <div class="icon icon-blue">💧</div>
+        <div>
+          <div class="name">Hydro-Sync</div>
+          <div class="desc">Adaptive water alerts</div>
+        </div>
+      </div>
+      <div class="guardian-feature">
+        <div class="icon icon-green">🏃</div>
+        <div>
+          <div class="name">Active Pulse</div>
+          <div class="desc">Movement nudges</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="guardian-watch">
+    <div class="watch-visual">
+      <div class="watch-screen">
+        <div class="watch-heart">❤️</div>
+        <div class="watch-bpm">72</div>
+        <div class="watch-bpm-label">BPM · Resting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news">
+  <div class="section-label">Clinical Studies & News</div>
+  <h2 class="section-title">Verified insights from the world<br>of nutrition and sports medicine</h2>
+  <div class="news-grid">
+    <div class="news-card">
+      <div class="news-thumb">🧪</div>
+      <div class="news-body">
+        <div class="news-tag">Clinical Research · 4 min read</div>
+        <div class="news-title">Impact of Ashwagandha on Cortisol: A 2025 Meta-Analysis</div>
+        <div class="news-excerpt">New research suggests significant reduction in stress markers with clinical-grade supplementation protocols tailored for modern lifestyles.</div>
+        <div class="news-meta">Recovery · 3 mins ago</div>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-thumb" style="background:#c5e8d4;">🥦</div>
+      <div class="news-body">
+        <div class="news-tag">Nutrition Science · 5 min read</div>
+        <div class="news-title">The Indian Vegan: Balancing Protein without Dairy</div>
+        <div class="news-excerpt">Exploring plant-based protein sources that fit perfectly into traditional Indian pantries for optimal muscle recovery and growth.</div>
+        <div class="news-meta">Nutrition Science · 1 hour ago</div>
+      </div>
+    </div>
+    <div class="news-card">
+      <div class="news-thumb" style="background:#daf0e4;">🌙</div>
+      <div class="news-body">
+        <div class="news-tag">Sleep Science · 6 min read</div>
+        <div class="news-title">Circadian Rhythms: Why 10 PM is the Golden Hour</div>
+        <div class="news-excerpt">Understanding the biochemical benefits of aligning your sleep with the natural body-night cycle for hormone optimization.</div>
+        <div class="news-meta">Recovery · 3 hours ago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label" style="color:var(--green-light);">Join 500,000+ Users</div>
+  <h2 class="section-title">Start Your Journey</h2>
+  <p class="section-sub">Join 500,000+ users who have transformed their health with clinical-grade insights and cultural sensitivity.</p>
+  <div class="cta-buttons">
+    <button class="cta-btn primary">Download for iOS</button>
+    <button class="cta-btn secondary">Download for Android</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-logo">ProPoshan</span>
+      <p>The clinical-grade wellness ecosystem built for the modern Indian. Designed for the modern Indian lifestyle.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Clinical Sources</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="social-links">
+        <div class="social-link">𝕏</div>
+        <div class="social-link">in</div>
+        <div class="social-link">📷</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ProPoshan Clinical Vitality. All rights reserved.</span>
+    <span>Made with 💚 for India</span>
+  </div>
+</footer>
+
+</body>
+</html>
